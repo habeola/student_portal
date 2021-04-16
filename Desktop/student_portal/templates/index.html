@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+    {% block title%}
+        Student Portal:Index
+    {% endblock %}
+
+    {% block content %}
+    <div class="index-container">
+        <div class="page-title" >
+            <h3><b>Info!</b>All students record table</h3>
+        </div>
+        <div class="row">
+                {% include ['searchbar.html'] %}  
+        </div>
+        <div class="row" id="table-container">
+            <div class="col-sm-12">
+                <div id="table-background"></div>        
+                <table class="table table-striped table-bordered table text-center" id="table-strip">
+                    <thead>
+                        <tr>
+                            <th class="text-center">S/N</th>
+                            <th class="text-center">Name</th>
+                            <th class="text-center">Gender</th>
+                            <th class="text-center">Jamb Score</th>
+                            <th class="text-center">Admission</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    {% block tableBody %}
+                    <tbody>
+                        {% for student in students_info %}
+                        <tr class="students" title=" {{ student.StudentID }}">
+                            <td>{{ loop.index }}</td>
+                            <td id="text-cap">{{ student.FirstName}} {{student.MiddleName}} {{ student.LastName}}</td>
+                            <td>{{ student.Sex }}</td>
+                            <td>{{ student.JambScore }}</td>
+                            <td>Undecided</td>
+                            <!-- <td><a href="/detail/{{ student.StudentID }}" class="">view more...</a></td> -->
+                            <td><a href="{{ url_for('detail', id=student.StudentID ) }}" class="">view more...</a></td>
+                        </tr>
+                
+                        {% endfor %}
+                    </tbody>
+                    {% endblock %}
+                </table>
+                <div id="table-background"></div>  
+            </div>
+        </div>
+    </div>
+        
+    {% endblock %}

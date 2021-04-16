@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+    <!-- Begin page content -->
+    {% block content %}
+    <div id="portal-section">   
+      <div class="row" id="portal">
+       <div class="portal-container">
+          <div class="portal-header">
+            <h1>Student Portal Form</h1>
+          </div>
+          <div class="portal-title">
+              <p>Please fill in all required information</p>
+              <h3>Personal information</h3>
+          </div>
+          <div class="row">       
+            <form action="" method="POST" id="data-form" enctype="multipart/form-data">
+                <div class="form-group col-sm-12"  >
+                    <label for="photo">Upload Image</label>
+                    <input type="file" name="photo" id="photo" accept="image/*" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="FirstName">FirstName</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Adamu" value="{{ first_name }}" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="middleName">MiddleName</label>
+                    <input type="text" class="form-control" id="middleName" name="middleName" placeholder="Oluwaseyi" value="{{ middle_name }}" required>
+                </div>
+                <div class="form-group col-sm-6" >
+                    <label for="lastName">LastName</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Amaka" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group radio col-sm-6" >
+                    <label >
+                        <input type="radio" name="gender" id="male" value="male" required> Male
+                    </label>
+                    <label  >
+                        <input type="radio" name="gender" id="female" value="female"> Female
+                    </label>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="d-o-b">Date of Birth</label>
+                    <input type="date" class="form-control" id="d-o-b" name="d-o-b" placeholder="mm/dd/yyyy" required>
+                </div>
+                
+                <div class="form-group col-sm-6">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="08035554444" pattern="[0-9]{4}[0-9]{3}[0-9]{4}" required>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="address">Address</label>
+                    <textarea class="form-control" name="address" id="address" rows="2" required></textarea>
+                  </div>
+                <div class="form-group col-sm-6 seme">
+                    <label for="">State</label>
+                    <select class="form-control form-select" name="state" id="state" required>
+                        <option selected title="">Select State</option>
+                        {% for state in state_qs %}
+                        <option selected title="{{ state.id }}"  value="{{ state.label }}">{{ state.label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="">Local Goverment</label>
+                    <select class="form-control form-select" name="local-govt-area" id="lga" required>
+                        <option selected>Select Local Goverment</option>
+                    </select>
+                </div>
+                <div class="form-group col-sm-6">
+                    <label for="next-of-kin">Next of Kin</label>
+                    <input type="text" class="form-control" id="next-of-kin" name="next-of-kin" placeholder="David Mark" required>
+                </div>   
+                <div class="col-sm-12" id="section-header">
+                    <h3>Academics Related Information</h3>
+                </div>
+                <div class="form-group col-sm-6" id="score">
+                    <label for="jamb-score">Jamb Score</label>
+                    <input type="number" class="form-control" id="jamb-score" name="jamb-score" placeholder="Enter Your Jamb Score" required>
+                </div>
+                <div class="col-sm-12" id="btn-control">
+                    <button type="submit" class="btn btn-default" >Submit</button>
+                </div>       
+            </form> 
+          </div>        
+        </div> 
+      </div>
+    </div>
+    {% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+    <!-- Begin page content -->
+    {% block title%}
+        Student Portal:Home
+    {% endblock %}
+    
+
+    {% block content %}
+    <div class="banner-container">
+      <div class="row">
+        <div class="content-container col-sm-6">
+          <div class="banner-content">
+            <h1>Student Main Portal</h1>
+            <p>Ustacky Student Portal registration. Join us today
+              for your online courses
+            </p>
+            <div class="get-started-btn">
+              <a href="{{ url_for('portal') }}">Get Started</a>
+            </div>
+        </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="banner-img-container">
+            <img class="banner-img" src="static/images/homepage.svg" alt="">
+          </div>
+        </div>
+
+      </div>
+    </div>
+    {% endblock %}
+
+    
+
+
+  
+

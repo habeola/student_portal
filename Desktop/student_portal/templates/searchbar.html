@@ -1,0 +1,27 @@
+<div class="search-section"> 
+    <form class="form-inline" action="/search" method="POST">
+        <div class="form-group col-sm-2">
+            <input name="student-name"  class="form-control mr-sm-2" type="text" placeholder="Search Record By Name Only" aria-label="Search" id="width-ext" >
+        </div>
+        <div class="form-group col-sm-2">
+            <select name="student-status" class="custom-select form-control"  id="width-ext" >
+                <option selected>Select-Admision-Status</option>
+                <option value="admitted">Admitted</option>
+                <option value="undecided">Undecided</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-2">
+            <select name="student-gender" class="custom-select form-control" id="width-ext">
+                <option selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="form-group col-sm-2">
+            <input name="student-jamb-score" type="text" class="form-control"  placeholder="Enter Jamb Score" id="width-ext">
+        </div>
+        <div class="form-group col-sm-2"> 
+            <button type="search" class="btn btn-default form-group" id="search-button">Search</button>
+        </div>
+    </form>
+</div>

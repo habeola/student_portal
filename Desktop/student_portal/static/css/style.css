@@ -1,0 +1,271 @@
+.banner-container {
+    height: 90%;
+    margin:10%;
+}
+
+.banner-content {
+    padding-top: 70px; 
+    margin-top: 10px;
+    color: #34325e;
+}
+
+.banner-content h1 {
+    font-size: 50px;
+}
+
+.banner-content p {
+    color: #fd7e14; 
+    font-size: 30px;
+}
+
+.get-started-btn {
+    height: 50px;
+    width: 225px;
+    padding: 15px;
+    margin-top: 70px;
+    border-radius: 5px;
+    text-align: center;
+    background-color:  #34325e;  
+}
+
+.get-started-btn a {
+    font-size: larger;
+    text-decoration: none;
+    color: #995546;
+}
+
+.banner-img-container {
+    visibility: visible;
+    text-align: center;
+}
+
+.banner-img {
+    width: 500px;   
+}
+
+/* portal section */
+
+#portal-section {
+    margin:70px 10% 20px 10%;
+}
+
+#portal {
+    background-color: rgb(216, 236, 246);
+    margin: 20px 20px 70px;
+}
+
+.portal-container {
+    margin: 30px;
+}
+
+.portal-header {
+    text-align: center;
+}
+
+.portal-title > p {
+    color: #eb3219 
+}
+
+.portal-title > h3, #section-header >h3 {
+    background-color: #5c6273; 
+    height: 40px; 
+    color: white; 
+    padding-top: 5px; 
+    padding-left: 5px;
+}
+
+#btn-control {
+    text-align: center;
+}
+
+#btn-control > button {
+    width: 325px; 
+    height: 40px; 
+    color: #ffffff;
+    background-color: #5c6273; 
+}
+
+#nav-header-section {
+    margin-left:2%"
+}
+
+#score > input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+#score > input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.index-container {
+    margin: 70px;
+}
+
+.page-title > h3 {
+    height: 70px; 
+    padding: 20px 10px; 
+    color:#33315d;
+    background-color: #d8ecf6; 
+}
+
+.search-section {
+    margin: 15px 20px;
+}
+
+.search-section div {
+    width: 20%;
+}
+
+#width-ext {
+    width: 100%;
+}
+
+#table-container {
+    margin: 20px 5px;
+}
+
+#table-strip {
+    margin-bottom: 0
+}
+
+#table-background {
+    height: 15px; 
+    background-color: rgb(51, 49, 93); 
+}
+
+.detail-container {
+    margin: 100px;
+}
+
+.detail-container p {
+    text-transform: capitalize;
+    font-size: 17px;
+    padding: 10px 0;
+}
+
+#detail-card {
+    margin-top: 10px
+}
+
+#detail-card > div {
+    width: 100%; 
+    background-color:#cb895c 
+}
+
+#detail-card img {
+    width: 100%;  
+    height: 300px;
+}
+
+#card-title {
+    padding: 2px 16px 10px ;
+}
+
+#card-title > div {
+    height: 30px;
+    border-radius: 5px;
+    background-color:#5ebcd6;
+
+}
+
+#student-info {
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+
+#card-title p {
+    padding-top: 4px;
+    font-weight: bolder;
+}
+
+#card-title > h3, #card-title p {
+    text-align: center;
+    text-transform: capitalize;
+    color: #fff;
+}
+
+#detail-header {
+    height: 50px; 
+    background-color: #d8ecf6; 
+}
+
+#detail-header >h3 {
+    padding: 12px 0;
+}
+
+#student-email {
+    text-transform: lowercase !important;  
+}
+
+#nav {
+    background-color: #34325e
+}
+
+#logo {
+    height:auto ; 
+    width: 50px; 
+    margin: 0 35px;
+}
+
+#text-cap {
+    text-transform: capitalize;
+}
+
+#footer {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 45px;
+    background-color: #34325e;
+    color: #9d9d9d;
+}
+
+#search-button {
+    width: 100%; 
+    color: #fff;
+    background-color: rgb(49, 121, 182); 
+}
+
+#footer, p {
+    margin-top: 15px;
+}
+
+
+/* Media queries for  responsiveness */
+
+@media only screen and (max-width: 760px) {
+    .banner-img-container {
+        visibility: hidden;      
+    }
+
+    .content-container {
+        position: fixed;
+        margin-top: 95px;
+    }
+
+    .portal-title > h3, #section-header >h3 {
+        font-size: 15px;
+    }
+
+    #btn-control > button {
+        width: 100px;
+    }
+
+    .index-container {
+        margin: 70px 10px;
+    }
+
+    .search-section div {
+        width: auto;
+    }
+    
+    
+  }
+
+ 
+
+

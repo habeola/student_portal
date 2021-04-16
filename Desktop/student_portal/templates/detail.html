@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title%}
+    Student Portal:Detail
+{% endblock %}
+
+{% block content %}
+
+{% for info in student_details %}
+<div class="detail-container">
+    <div class="row">
+        <div class="col-md-2" id="detail-card">
+            <div>
+                <img src="../static/images/{{info.profile_img_url }}" alt="profile_img">
+                <div id="card-title">
+                    <h3>{{ info.FirstName }} {{info.LastName }}</h3>
+                    <div>
+                        <p>undecided</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-10">
+            <div id="detail-header">
+                <h3>Personal Information</h3>
+            </div>
+            <div id="student-info">
+                <p><b>Email: </b>{{ info.Email}}</p>
+                <p><b>Gender: </b>{{ info.Sex}}</p>
+                <p ><b>Phone: </b> {{ info.PhoneNumber }}</p>
+                <p><b>Address: </b> {{ info.Address }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div id="detail-header">
+            <h3>Other Information</h3>
+        </div>
+        <div class="col-sm-3" >
+            <p><b>State of Origin: </b>{{ info.StateOfOrigin }}</p>
+        </div>
+        <div class="col-sm-3" >
+            <p><b>Local Govt: </b>{{ info.LocalGovernment}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="detail-header">
+            <h3>Academics Related Information</h3>
+        </div>
+        <div class="col-sm-3" >
+            <p><b>Next of Kin: </b>{{ info.NextOfKin}}</p>
+        </div>
+        <div class="col-sm-3">
+            <p><b>Jamb Score: </b>{{ info.JambScore }}</p>
+        </div>
+        <div class="col-sm-3">
+            <p><b>Status: </b>undecided</p>
+        </div>
+        <div class="col-sm-3">
+            <p><b>Change Status: </b>
+                <select name="" id="">
+                    <option value="" selected>Active</option>
+                    <option value="">Inactive</option>
+                </select>
+            </p>
+        </div>
+        
+    </div>
+
+</div>
+{% endfor %}
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+    {% block title %}
+    Student Portal:Search
+    {%endblock %}
+
+    {% block tableBody %}
+        <tbody>
+            {% for search in search_by_student_name %}
+            <tr class="searchs" title="{{ search.searchID }}">
+                <td>{{ loop.index }}</td>
+                <td id="text-cap"> {{ search.FirstName}} {{search.MiddleName}} {{ search.LastName}} </td>
+                <td>{{ search.Sex }}</td>
+                <td>{{ search.JambScore }}</td>
+                <td>undecided</td>
+                <td><a href="{{ url_for('detail', id=search.StudentID ) }}" class="">view more...</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    {% endblock%}
+
+ 

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>
+      {% block title %} {% endblock %}
+    </title>
+    <!-- Bootstrap core CSS -->
+   
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }} " rel="stylesheet">
+    <script src="{{ url_for('static', filename='js/jquery.js') }} "></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }} "></script>
+    <script type="text/javascript" src="../static/js/custom.js" async></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}" ></script>
+
+</head>
+  <body>
+    <div>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+      <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">          
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+          </div>
+          
+          <div class="modal-body text-center"> 
+             {% for category, message in messages%} 
+              <h3 class="{{ category}} "> {{ message }}</h3>
+            {% endfor %} 
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div> 
+      {% endif %}
+      {% endwith %}
+
+      {% include ['navbar.html'] %}
+
+      {% block content %}
+      
+      {% endblock %}
+      
+      {% include ['footer.html'] %}
+    </div>
+  </body>
+</html>
