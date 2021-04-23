@@ -29,13 +29,6 @@ def db_connection(sql_query, var=None):
 
     return fetched_output
     
-# Getting the list of all states in Nigeria from the database
-def get_all_states():
-    sql_query = 'select * from nigeria_states'
-    all_states = db_connection(sql_query)
-
-    return all_states
-
 
 # Query the database to get all student information
 def get_all_student_info():
@@ -43,43 +36,6 @@ def get_all_student_info():
     all_students_info = db_connection(sql_query)
 
     return all_students_info
-
-
-# Getting the state id from the selected state and using it to query the database
-@app.route('/local-govts', methods=['POST'])
-def get_all_local_govts():
-    # Getting the state id with ajax
-    req = request.get_json()
-    state_id = req['state_id']
-
-    if state_id == 0:
-        return None
-    else: 
-        # Querying the database with the state id to get the list of its local government
-        sql_query = 'select * from nigeria_local_govts where state_id=%s' 
-        # Calling the function above to query database and storing in a variable
-        all_local_govt = db_connection(sql_query, var=state_id)
-
-        # Stored list of local govt gotten in a session so that it can be used in other function
-        session['local_govts_qs'] = all_local_govt
-        
-        # Caling the json.dumps method to perform the action on successful in the ajax call
-        return json.dumps('success')
-
-
-# Creating the api endpoint for the local government
-@app.route('/api/local-govt')
-def api_local_govt():
-    # Get list of local government in the state selected from the session where it was stored
-    local_govts_from_selected_state = session.get('local_govts_qs')
-    html_string_selected = ''
-
-    # Looping through the list of local government of selected sated and storing in a variable
-    for local_govt in local_govts_from_selected_state:
-            html_string_selected += '<option value="{}">{}</option>'.format(local_govt['LGA'], local_govt['LGA'])
-
-    # Returning a json object and sending to the route on this view
-    return jsonify(html_string_selected=html_string_selected)
 
 
 
@@ -93,7 +49,7 @@ def landing():
 @app.route('/portal', methods=['GET', 'POST'])
 def portal():
     # Getting all Nigeria States from the database
-    state_qs = get_all_states()
+    # state_qs = get_all_states()
 
     # Getting form inputs
     if request.method == 'POST':
@@ -126,8 +82,8 @@ def portal():
             else:
                 #Jamb score validation
                 jamb_score = int(jamb_score)
-                if jamb_score < 1:
-                    flash("Jamb score cannot be less than 1")
+                if jamb_score < 1 or jamb_score > 400:
+                    flash("Invalid Score! Please enter correct score")
                 else:
                     #Check for existing student data in the database
                     if email or phone_number:
@@ -155,11 +111,11 @@ def portal():
                             cur.close()
                             # Save image path the project folder
                             image.save(filepath)
-                            flash('Form has been submitted succefully')
+                            flash('Form has been submitted successfully')
                             # Redirecting user to next page 
                             return redirect(url_for('index'))   
                 
-    return render_template('portal.html', state_qs=state_qs)
+    return render_template('portal.html')
 
 
 # Index page view and route
@@ -195,6 +151,7 @@ def search():
     # Adding % to student so as to query the database with a wildcard
     if student_name:
         student_name_wildcard = str(student_name) + "%"
+        print(student_name_wildcard)
     # If no value of student_name is gotten from the student name input, return empty string
     else:
         student_name_wildcard = student_name
@@ -205,6 +162,52 @@ def search():
         search_by_student_name = cur.fetchall()
     
     return render_template('search.html', search_by_student_name=search_by_student_name)
+
+
+
+
+# Getting the list of all states in Nigeria from the database
+# def get_all_states():
+#     sql_query = 'select * from nigeria_states'
+#     all_states = db_connection(sql_query)
+
+#     return all_states
+
+# # Getting the state id from the selected state and using it to query the database
+# @app.route('/local-govts', methods=['POST'])
+# def get_all_local_govts():
+#     # Getting the state id with ajax
+#     req = request.get_json()
+#     state_id = req['state_id']
+
+#     if state_id == 0:
+#         return None
+#     else: 
+#         # Querying the database with the state id to get the list of its local government
+#         sql_query = 'select * from nigeria_local_govts where state_id=%s' 
+#         # Calling the function above to query database and storing in a variable
+#         all_local_govt = db_connection(sql_query, var=state_id)
+
+#         # Stored list of local govt gotten in a session so that it can be used in other function
+#         session['local_govts_qs'] = all_local_govt
+        
+#         # Caling the json.dumps method to perform the action on successful in the ajax call
+#         return json.dumps('success')
+
+
+# # Creating the api endpoint for the local government
+# @app.route('/api/local-govt')
+# def api_local_govt():
+#     # Get list of local government in the state selected from the session where it was stored
+#     local_govts_from_selected_state = session.get('local_govts_qs')
+#     html_string_selected = ''
+
+#     # Looping through the list of local government of selected sated and storing in a variable
+#     for local_govt in local_govts_from_selected_state:
+#             html_string_selected += '<option value="{}">{}</option>'.format(local_govt['LGA'], local_govt['LGA'])
+
+#     # Returning a json object and sending to the route on this view
+#     return jsonify(html_string_selected=html_string_selected)
 
 
 

@@ -933,11 +933,7 @@ stateInfo = [
       "state": "Zamfara State",
       "local": [
         "Anka",
-        "Bakura",
-        "Birnin MagajiKiyaw",
-        "Bukkuyum",
-        "Bungudu",
-        "Gummi",
+        
         "Gusau",
         "Kaura Namoda",
         "Maradun",
@@ -950,13 +946,33 @@ stateInfo = [
     }
   ]
 
-//html elements
-let state = document.getElementById("state");	
-let lga = document.getElementById("lga");
 
 
+let stateSelect = document.getElementById("state")
+let localGovtSelect = document.getElementById("lga")
+
+for (let i in stateInfo) {
+  stateSelect.options[stateSelect.options.length] = new Option(stateInfo[i].state, stateInfo[i].state);
+  }
+
+stateSelect.onchange = function (){
+  localGovtSelect.length = 1
+  stateSelectedIndex = this.selectedIndex - 1
+  for (let i in stateInfo[stateSelectedIndex].local){
+    localGovt = stateInfo[stateSelectedIndex].local[i]
+    localGovtSelect.options[localGovtSelect.options.length] = new Option(localGovt, localGovt)
+  } 
+
+  // localGovt = stateInfo[stateSelectedIndex].local
+  // getEachLocalGovt = localGovt.forEach(eachFunc)
+  
+  // function eachFunc(value, index, array){
+  //   localGovtSelect.options[localGovtSelect.options.length] = new Option(value, value)
+  // }
+}
 
 
-
+  
+ 
 
 
